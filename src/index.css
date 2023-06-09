@@ -1,0 +1,33 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+/* h1, h2, h3, h4, h5,h6 {
+  font-family: 'Playfair Display', serif;
+} */
+header .active {
+  color: #063B5A;
+}
+.snap {
+ -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.snap::-webkit-scrollbar {
+display: none;
+}
+.btn-sd  {
+  box-shadow: 0px 0px 8px #888888;
+}
+input, button {
+  outline: none;
+}

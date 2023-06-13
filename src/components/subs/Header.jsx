@@ -1,19 +1,19 @@
-import logo from '../../assets/logo.svg';
-// import { useState } from 'react';
-// import menu from '../../assets/menu.svg';
-// import ham from '../../assets/x.svg';
+import { useState } from 'react';
+import logo from '../../assets/logo.png';
+import menu from '../../assets/menu.svg';
+import ham from '../../assets/x.svg';
 import { NavLink } from 'react-router-dom';
 
 export default function Header() {
-  // const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 left-0 z-[9999] bg-white text-[#404040] shadow-md px-5 md:px-20 py-5 flex justify-center items-center ">
-      {/* <img
+      <img
         src={open ? ham : menu}
         alt=""
         onClick={() => setOpen(!open)}
         className="block md:hidden transition-all duration-1000 ease-in-out mr-auto"
-      /> */}
+      />
       <NavLink to="/" className="mr-auto">
         <img
           src={logo}

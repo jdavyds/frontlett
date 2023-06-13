@@ -31,3 +31,20 @@ display: none;
 input, button {
   outline: none;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #C4C4C41A; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #1279E0; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1279E0; 
+}

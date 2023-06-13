@@ -53,6 +53,7 @@ import dp2 from '../assets/dp2.svg';
 import dp3 from '../assets/dp3.svg';
 import dp4 from '../assets/dp4.svg';
 import dp5 from '../assets/dp5.svg';
+import ReactPlayer from 'react-player';
 
 export default function Home() {
   const ref = useRef(null);
@@ -719,6 +720,70 @@ export default function Home() {
               <FontAwesomeIcon icon={faStar} />
             </figcaption>
           </figure>
+        </div>
+      </section>
+      <section className="px-5 md:px-20 py-10 flex flex-col gap-8 items-center text-center">
+        <h3 className="text-[40px] font-[600] ">Testimonials</h3>
+        <div className="grid grid-cols-[3fr_1fr] w-full gap-14 h-[70vh]">
+          <div className="bg-red-400 w-full rounded-md">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${'T1qCP13J4Gg'}`}
+              className="rounded-md min-h-full min-w-full"
+            />
+          </div>
+          <div className="flex flex-col overflow-y-scroll pr-10 divide-y-2">
+            <nav
+              className={`flex p-4 gap-4 items-center ${'bg-[#1279E080] text-white rounded-md'}`}
+            >
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+            <nav className={`flex p-4 gap-4 items-center`}>
+              <img src={dp1} alt="" className="h-16" />
+              <p className="flex flex-col items-start gap-2 text-lg">
+                <b>Linda Ogadi</b>
+                <span className="">Nimbou</span>
+              </p>
+            </nav>
+          </div>
         </div>
       </section>
       <section className=" bg-[#EBEBEB] py-14 flex flex-col gap-10 justify-center items-center">

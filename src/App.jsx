@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import './index.css';
-const Home = lazy(() => import('./components/Home'));
+const Home = lazy( () => import( './components/Home' ) );
+const Contact = lazy(() => import('./components/Contact'));
 const Employer = lazy(() => import('./components/Employer'));
 const Virtuals = lazy(() => import('./components/Virtualt'));
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter( [
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: '/contact-us',
+    element: <Contact />,
   },
   {
     path: '/employer',

@@ -54,6 +54,7 @@ import dp3 from '../assets/dp3.svg';
 import dp4 from '../assets/dp4.svg';
 import dp5 from '../assets/dp5.svg';
 import ReactPlayer from 'react-player';
+import wa from '../assets/wa.svg';
 
 export default function Home() {
   const ref = useRef(null);
@@ -108,6 +109,14 @@ export default function Home() {
 
   return (
     <main>
+      <div className="flex text-xs gap-1 items-center justify-center text-[#00000087] py-1">
+        <span className="flex items-center gap-1">
+          Reach us on <img src={wa} alt="" /> Nigeria:
+          0700-STAFF-SHARE (0700-78233-74273) | 0800-555-333-111 (Ext.
+          1) | 0815-656-1293 (Glo Toll) |{' '}
+        </span>
+        <span className="text-primary">Salary Cost Calculator</span>
+      </div>
       <Header />
       <section
         className="bg-cover bg-center bg-no-repeat h-fit px-5 md:px-20 py-10 md:py-20 flex flex-col  gap-5 justify-center text-white relative -z-0"

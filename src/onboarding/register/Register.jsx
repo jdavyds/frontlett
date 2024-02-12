@@ -91,7 +91,7 @@ export default function Register() {
           onSubmit={handleSubmit}
         >
           <h1 className="mx-auto text-2xl col-span-2">Enter Information</h1>
-          <label className="flex flex-col gap-2">
+          <label className="flex flex-col gap-2 col-span-2">
             <span>Name</span>
             <input
               type="text"

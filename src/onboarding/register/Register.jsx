@@ -205,7 +205,7 @@ export default function Register() {
               onChange={(e) =>
                 setState((prevState) => ({
                   ...prevState,
-                  password: e.target.value,
+                  verifyPassword: e.target.value,
                 }))
               }
             />

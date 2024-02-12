@@ -201,7 +201,7 @@ export default function Register() {
               type={showP2 ? "text" : "password"}
               placeholder="Confirm Password"
               className="h-12 px-3 border z-10 w-full py-5 rounded-md bg-inherit outline-none"
-              value={state.password}
+              value={state.verifyPassword}
               onChange={(e) =>
                 setState((prevState) => ({
                   ...prevState,

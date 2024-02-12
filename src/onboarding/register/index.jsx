@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isError, updateMessage } from "../../store/slices/userSlice";
 import toast from "react-hot-toast";
@@ -63,14 +63,13 @@ export default function Index() {
               onChange={(e) => setState(e.target.value)}
             />
           </label>
-          <Link
-            // type="submit"
-            to={"/register"}
+          <button
+            type="submit"
             className={`w-full bg-secondary font-medium text-white rounded-md flex justify-center items-center px-5 h-12
             ${loading ? "animate-pulse duration-500 cursor-not-allowed" : ""}`}
           >
             Continue
-          </Link>
+          </button>
         </form>
       </div>
       <Footer />

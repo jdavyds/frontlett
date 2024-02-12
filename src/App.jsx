@@ -1,49 +1,44 @@
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-} from 'react-router-dom';
-import { lazy, Suspense } from 'react';
-import './index.css';
-const Home = lazy( () => import( './components/Home' ) );
-const Contact = lazy(() => import('./components/Contact'));
-const Employer = lazy(() => import('./components/Employer'));
-const Virtuals = lazy(() => import('./components/Virtualt'));
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import "./index.css";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Employer from "./pages/Employer";
+import Virtuals from "./pages/Virtualt";
+import VerifyCode from "./onboarding/register";
+import Register from "./onboarding/register/Register";
 
-const router = createBrowserRouter( [
+
+const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/contact-us',
+    path: "/contact-us",
     element: <Contact />,
   },
   {
-    path: '/employer',
+    path: "/employer",
     element: <Employer />,
   },
   {
-    path: '/virtualt',
+    path: "/virtualt",
     element: <Virtuals />,
+  },
+  {
+    path: "/verify",
+    element: <VerifyCode />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
 function App() {
   return (
     <div className="App">
-      <Suspense
-        fallback={
-          <div className="w-screen h-screen flex justify-center bg-gray-300 opacity-70 backdrop-blur-md items-center">
-            <svg
-              className="animate-spin h-half w-half  ..."
-              viewBox="0 0 24 24"
-            ></svg>
-          </div>
-        }
-      >
-        <RouterProvider router={router} />
-      </Suspense>
+      <RouterProvider router={router} />
       <Outlet />
     </div>
   );

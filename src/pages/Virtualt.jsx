@@ -1,17 +1,17 @@
-import Footer from './subs/Footer';
-import Header from './subs/Header';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useEffect, useState } from 'react';
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { useEffect, useState } from "react";
 
 export default function Virtualt() {
-  const [currency, setCurrency] = useState('naira');
+  const [currency, setCurrency] = useState("naira");
   const handleCurrency = (event) => {
     setCurrency(event.target.value);
   };
-  const [position, setPosition] = useState('');
-  const [level, setLevel] = useState('');
+  const [position, setPosition] = useState("");
+  const [level, setLevel] = useState("");
   const [slots, setSlots] = useState(1);
   const [frontlettSalary, setFrontlettSalary] = useState(0);
 
@@ -31,44 +31,44 @@ export default function Virtualt() {
     const calculateFrontlettSalary = () => {
       let baseSalary = 0;
 
-      if (position === 'frontend') {
-        if (level === '1') {
+      if (position === "frontend") {
+        if (level === "1") {
           baseSalary = 25000;
-        } else if (level === '2') {
+        } else if (level === "2") {
           baseSalary = 35000;
-        } else if (level === '3') {
+        } else if (level === "3") {
           baseSalary = 45000;
-        } else if (level === '4') {
+        } else if (level === "4") {
           baseSalary = 55000;
         }
-      } else if (position === 'backend') {
-        if (level === '1') {
+      } else if (position === "backend") {
+        if (level === "1") {
           baseSalary = 30000;
-        } else if (level === '2') {
+        } else if (level === "2") {
           baseSalary = 40000;
-        } else if (level === '3') {
+        } else if (level === "3") {
           baseSalary = 50000;
-        } else if (level === '4') {
+        } else if (level === "4") {
           baseSalary = 60000;
         }
-      } else if (position === 'productdesigner') {
-        if (level === '1') {
+      } else if (position === "productdesigner") {
+        if (level === "1") {
           baseSalary = 20000;
-        } else if (level === '2') {
+        } else if (level === "2") {
           baseSalary = 30000;
-        } else if (level === '3') {
+        } else if (level === "3") {
           baseSalary = 40000;
-        } else if (level === '4') {
+        } else if (level === "4") {
           baseSalary = 50000;
         }
-      } else if (position === 'projectmanager') {
-        if (level === '1') {
+      } else if (position === "projectmanager") {
+        if (level === "1") {
           baseSalary = 25000;
-        } else if (level === '2') {
+        } else if (level === "2") {
           baseSalary = 35000;
-        } else if (level === '3') {
+        } else if (level === "3") {
           baseSalary = 45000;
-        } else if (level === '4') {
+        } else if (level === "4") {
           baseSalary = 55000;
         }
       }
@@ -99,8 +99,8 @@ export default function Virtualt() {
             Frontlett Salary Cost Calculator - Virtualt
           </b>
           <p className="text-[#00000087]">
-            This calculator determines your Frontlett Salary per Slot
-            for a specific position and skill level.
+            This calculator determines your Frontlett Salary per Slot for a
+            specific position and skill level.
           </p>
           <nav className="flex-col md:grid grid-cols-2 gap-y-5 gap-x-[10%]">
             <label className="flex justify-between items-center">
@@ -112,8 +112,8 @@ export default function Virtualt() {
                   displayEmpty
                   sx={{
                     height: 40,
-                    border: '1px solid',
-                    borderColor: '#1279E0',
+                    border: "1px solid",
+                    borderColor: "#1279E0",
                   }}
                 >
                   <MenuItem value="naira">Naira</MenuItem>
@@ -176,7 +176,7 @@ export default function Virtualt() {
             <tbody className="">
               <tr>
                 <td>
-                  <FormControl sx={{ minWidth: '100%' }}>
+                  <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={position}
                       onChange={handleChangePosition}
@@ -186,12 +186,8 @@ export default function Virtualt() {
                       }}
                       className="bg-[#C4C4C41A] active:border border-[#1279E0]"
                     >
-                      <MenuItem value="frontend">
-                        Frontend Developer
-                      </MenuItem>
-                      <MenuItem value="backend">
-                        Backend Developer
-                      </MenuItem>
+                      <MenuItem value="frontend">Frontend Developer</MenuItem>
+                      <MenuItem value="backend">Backend Developer</MenuItem>
                       <MenuItem value="product designer">
                         Product Designer
                       </MenuItem>
@@ -202,7 +198,7 @@ export default function Virtualt() {
                   </FormControl>
                 </td>
                 <td>
-                  <FormControl sx={{ minWidth: '100%' }}>
+                  <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={level}
                       onChange={handleChangeLevel}
@@ -220,7 +216,7 @@ export default function Virtualt() {
                   </FormControl>
                 </td>
                 <td>
-                  <FormControl sx={{ minWidth: '100%' }}>
+                  <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={slots}
                       onChange={handleChangeSlots}

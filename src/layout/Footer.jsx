@@ -1,11 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-  faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
+
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -110,19 +104,19 @@ export default function Footer() {
           </b>
           <nav className="flex gap-1 items-center text-lg">
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
-              <FontAwesomeIcon icon={faFacebook} />
+              <FaFacebook />
             </span>
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
-              <FontAwesomeIcon icon={faInstagram} />
+              <FaInstagram />
             </span>
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
-              <FontAwesomeIcon icon={faTwitter} />
+              <FaTwitter />
             </span>
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
-              <FontAwesomeIcon icon={faLinkedin} />
+              <FaLinkedin />
             </span>
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
-              <FontAwesomeIcon icon={faYoutube} />
+              <FaYoutube />
             </span>
           </nav>
           <p className="text-[#1279E0]">Join Our Community</p>

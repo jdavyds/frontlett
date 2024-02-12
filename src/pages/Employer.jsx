@@ -1,14 +1,13 @@
-import Footer from './subs/Footer';
-import Header from './subs/Header';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
 
 export default function Employer() {
-  const [currency, setCurrency] = useState('naira');
+  const [currency, setCurrency] = useState("naira");
   const [virtualts, setVirtualts] = useState([]);
   const [totalSalary, setTotalSalary] = useState({});
   const handleChange = (event) => {
@@ -17,7 +16,7 @@ export default function Employer() {
   const handleAddVirtualt = () => {
     setVirtualts([
       ...virtualts,
-      { position: '', level: '1', slots: '1', regularSalary: 0 },
+      { position: "", level: "1", slots: "1", regularSalary: 0 },
     ]);
   };
   // const handleRemoveVirtualts = (index) => {
@@ -36,14 +35,11 @@ export default function Employer() {
         const frontlettSalary = calculateFrontlettSalary(
           selectedPosition,
           level,
-          slots,
+          slots
         );
         totalFrontlettSalary += frontlettSalary;
 
-        const regSalary = calculateRegularSalary(
-          selectedPosition,
-          level,
-        );
+        const regSalary = calculateRegularSalary(selectedPosition, level);
         totalRegSalary += regSalary;
       });
 
@@ -59,13 +55,13 @@ export default function Employer() {
   const calculateFrontlettSalary = (position, level, slots) => {
     let baseSalary = 0;
 
-    if (position === 'frontend') {
+    if (position === "frontend") {
       baseSalary = 25000;
-    } else if (position === 'backend') {
+    } else if (position === "backend") {
       baseSalary = 30000;
-    } else if (position === 'product designer') {
+    } else if (position === "product designer") {
       baseSalary = 20000;
-    } else if (position === 'project manager') {
+    } else if (position === "project manager") {
       baseSalary = 25000;
     }
 
@@ -76,26 +72,26 @@ export default function Employer() {
     return slotMultiplier;
   };
   const calculateRegularSalary = (position, level) => {
-    if (position === 'frontend') {
-      if (level === '1') return 130000;
-      if (level === '2') return 160000;
-      if (level === '3') return 200000;
-      if (level === '4') return 250000;
-    } else if (position === 'backend') {
-      if (level === '1') return 150000;
-      if (level === '2') return 180000;
-      if (level === '3') return 220000;
-      if (level === '4') return 300000;
-    } else if (position === 'product designer') {
-      if (level === '1') return 110000;
-      if (level === '2') return 130000;
-      if (level === '3') return 170000;
-      if (level === '4') return 200000;
-    } else if (position === 'project manager') {
-      if (level === '1') return 130000;
-      if (level === '2') return 160000;
-      if (level === '3') return 200000;
-      if (level === '4') return 250000;
+    if (position === "frontend") {
+      if (level === "1") return 130000;
+      if (level === "2") return 160000;
+      if (level === "3") return 200000;
+      if (level === "4") return 250000;
+    } else if (position === "backend") {
+      if (level === "1") return 150000;
+      if (level === "2") return 180000;
+      if (level === "3") return 220000;
+      if (level === "4") return 300000;
+    } else if (position === "product designer") {
+      if (level === "1") return 110000;
+      if (level === "2") return 130000;
+      if (level === "3") return 170000;
+      if (level === "4") return 200000;
+    } else if (position === "project manager") {
+      if (level === "1") return 130000;
+      if (level === "2") return 160000;
+      if (level === "3") return 200000;
+      if (level === "4") return 250000;
     }
 
     return 0;
@@ -103,15 +99,14 @@ export default function Employer() {
   const handleChangePosition = (e, index) => {
     const updatedVirtualts = [...virtualts];
     updatedVirtualts[index].position = e.target.value;
-    updatedVirtualts[index].frontlettSalary =
-      calculateFrontlettSalary(
-        e.target.value,
-        updatedVirtualts[index].level,
-        updatedVirtualts[index].slots,
-      );
-    updatedVirtualts[index].regularSalary = calculateRegularSalary(
+    updatedVirtualts[index].frontlettSalary = calculateFrontlettSalary(
       e.target.value,
       updatedVirtualts[index].level,
+      updatedVirtualts[index].slots
+    );
+    updatedVirtualts[index].regularSalary = calculateRegularSalary(
+      e.target.value,
+      updatedVirtualts[index].level
     );
     setVirtualts(updatedVirtualts);
   };
@@ -119,15 +114,14 @@ export default function Employer() {
   const handleChangeLevel = (e, index) => {
     const updatedVirtualts = [...virtualts];
     updatedVirtualts[index].level = e.target.value;
-    updatedVirtualts[index].frontlettSalary =
-      calculateFrontlettSalary(
-        updatedVirtualts[index].position,
-        e.target.value,
-        updatedVirtualts[index].slots,
-      );
-    updatedVirtualts[index].regularSalary = calculateRegularSalary(
+    updatedVirtualts[index].frontlettSalary = calculateFrontlettSalary(
       updatedVirtualts[index].position,
       e.target.value,
+      updatedVirtualts[index].slots
+    );
+    updatedVirtualts[index].regularSalary = calculateRegularSalary(
+      updatedVirtualts[index].position,
+      e.target.value
     );
     setVirtualts(updatedVirtualts);
   };
@@ -135,12 +129,11 @@ export default function Employer() {
   const handleChangeSlots = (e, index) => {
     const updatedVirtualts = [...virtualts];
     updatedVirtualts[index].slots = e.target.value;
-    updatedVirtualts[index].frontlettSalary =
-      calculateFrontlettSalary(
-        updatedVirtualts[index].position,
-        updatedVirtualts[index].level,
-        e.target.value,
-      );
+    updatedVirtualts[index].frontlettSalary = calculateFrontlettSalary(
+      updatedVirtualts[index].position,
+      updatedVirtualts[index].level,
+      e.target.value
+    );
     setVirtualts(updatedVirtualts);
   };
 
@@ -149,7 +142,7 @@ export default function Employer() {
       <Header />
       <section className="flex flex-col gap-5 justify-center items-center text-center py-12 md:py-16">
         <b className="text-bold text-3xl">
-          Hire your complete team with Frontlett and save more on{' '}
+          Hire your complete team with Frontlett and save more on{" "}
           <br className="hidden md:block" /> your original budget.
         </b>
         <p className="font-[600] md:text-lg">
@@ -162,9 +155,9 @@ export default function Employer() {
             Frontlett Salary Cost Calculator
           </b>
           <p className="text-[#00000087]">
-            This calculator helps you compare and see how Frontlett
-            lets you move faster by hiring more and saving more. It’s
-            a double edge sword.
+            This calculator helps you compare and see how Frontlett lets you
+            move faster by hiring more and saving more. It’s a double edge
+            sword.
           </p>
           <nav className="w-1/2 flex flex-col gap-5">
             <label className="flex justify-between items-center">
@@ -176,8 +169,8 @@ export default function Employer() {
                   displayEmpty
                   sx={{
                     height: 40,
-                    border: '1px solid',
-                    borderColor: '#1279E0',
+                    border: "1px solid",
+                    borderColor: "#1279E0",
                   }}
                 >
                   <MenuItem value="naira">Naira</MenuItem>
@@ -217,24 +210,18 @@ export default function Employer() {
               {virtualts.map((virtualt, index) => (
                 <tr key={index}>
                   <td>
-                    <FormControl sx={{ minWidth: '100%' }}>
+                    <FormControl sx={{ minWidth: "100%" }}>
                       <Select
                         value={virtualt.position}
-                        onChange={(e) =>
-                          handleChangePosition(e, index)
-                        }
+                        onChange={(e) => handleChangePosition(e, index)}
                         displayEmpty
                         sx={{
                           height: 40,
                         }}
                         className="bg-[#C4C4C41A] active:border border-[#1279E0]"
                       >
-                        <MenuItem value="frontend">
-                          Frontend Developer
-                        </MenuItem>
-                        <MenuItem value="backend">
-                          Backend Developer
-                        </MenuItem>
+                        <MenuItem value="frontend">Frontend Developer</MenuItem>
+                        <MenuItem value="backend">Backend Developer</MenuItem>
                         <MenuItem value="product designer">
                           Product Designer
                         </MenuItem>
@@ -245,7 +232,7 @@ export default function Employer() {
                     </FormControl>
                   </td>
                   <td>
-                    <FormControl sx={{ minWidth: '100%' }}>
+                    <FormControl sx={{ minWidth: "100%" }}>
                       <Select
                         value={virtualt.level}
                         onChange={(e) => handleChangeLevel(e, index)}
@@ -258,13 +245,12 @@ export default function Employer() {
                         <MenuItem value="1">Intern Level 1</MenuItem>
                         <MenuItem value="2">Junior Level 1</MenuItem>
                         <MenuItem value="3">Mid Level 1</MenuItem>
-                        junior2{' '}
-                        <MenuItem value="4">Senior Level 1</MenuItem>
+                        junior2 <MenuItem value="4">Senior Level 1</MenuItem>
                       </Select>
                     </FormControl>
                   </td>
                   <td>
-                    <FormControl sx={{ minWidth: '100%' }}>
+                    <FormControl sx={{ minWidth: "100%" }}>
                       <Select
                         value={virtualt.slots}
                         onChange={(e) => handleChangeSlots(e, index)}
@@ -302,8 +288,7 @@ export default function Employer() {
                     onClick={handleAddVirtualt}
                   >
                     <span> Add a Virtualt</span>
-                    <FontAwesomeIcon
-                      icon={faPlus}
+                    <FaPlus
                       className="text-bold text-sm"
                     />
                   </span>

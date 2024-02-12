@@ -1,10 +1,11 @@
-import contact1 from '../assets/contact1.jpg';
-import Header from './subs/Header';
-import contact2 from '../assets/contact2.jpg';
-import contact3 from '../assets/contact3.jpg';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import cancel from '../assets/x.svg';
+import contact1 from "../assets/contact1.jpg";
+import Header from "../layout/Header";
+import contact2 from "../assets/contact2.jpg";
+import contact3 from "../assets/contact3.jpg";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import cancel from "../assets/x.svg";
+
 export default function Contact() {
   const [showModal, setShowModal] = useState(false);
 
@@ -17,9 +18,9 @@ export default function Contact() {
             Frontlett is creating the future of Africa’s HR structure
           </h3>
           <p className="text-light">
-            Frontlett effectively connects those who are highly
-            skilled with those who need the services of a skilled
-            workforce for a quarter of the price.
+            Frontlett effectively connects those who are highly skilled with
+            those who need the services of a skilled workforce for a quarter of
+            the price.
           </p>
           <div className="flex flex-col md:flex-row gap-5">
             <button
@@ -47,36 +48,27 @@ export default function Contact() {
         </h3>
         <div className="flex flex-wrap gap-10 justify-center">
           <nav className="min-w-[45%] w-[45%] rounded-md shadow-[0px_2px_4px_2px_rgba(18,121,224,0.1)] p-10 flex flex-col gap-8 bg-white  text-light">
-            <b className="text-[#1A3047] text-[50px] font-[900]">
-              11%
-            </b>
+            <b className="text-[#1A3047] text-[50px] font-[900]">11%</b>
             <p>
-              Lorem ipsum dolor sit consiterie adcue c elict nadcr das
-              finbus et fi caree misere sae dj asd. Lorem ipsum dolor
-              sit consiterie adcue c elict nadcr das finbus et fi
-              caree misere sae dj asd.
+              Lorem ipsum dolor sit consiterie adcue c elict nadcr das finbus et
+              fi caree misere sae dj asd. Lorem ipsum dolor sit consiterie adcue
+              c elict nadcr das finbus et fi caree misere sae dj asd.
             </p>
           </nav>
           <nav className="min-w-[45%] w-[45%] rounded-md shadow-[0px_2px_4px_2px_rgba(18,121,224,0.1)] p-10 flex flex-col gap-8 bg-white  text-light">
-            <b className="text-[#1A3047] text-[50px] font-[900]">
-              20%
-            </b>
+            <b className="text-[#1A3047] text-[50px] font-[900]">20%</b>
             <p>
-              Lorem ipsum dolor sit consiterie adcue c elict nadcr das
-              finbus et fi caree misere sae dj asd. Lorem ipsum dolor
-              sit consiterie adcue c elict nadcr das finbus et fi
-              caree misere sae dj asd.
+              Lorem ipsum dolor sit consiterie adcue c elict nadcr das finbus et
+              fi caree misere sae dj asd. Lorem ipsum dolor sit consiterie adcue
+              c elict nadcr das finbus et fi caree misere sae dj asd.
             </p>
           </nav>
           <nav className="min-w-[45%] w-[45%] rounded-md shadow-[0px_2px_4px_2px_rgba(18,121,224,0.1)] p-10 flex flex-col gap-8 bg-white  text-light">
-            <b className="text-[#1A3047] text-[50px] font-[900]">
-              19%
-            </b>
+            <b className="text-[#1A3047] text-[50px] font-[900]">19%</b>
             <p>
-              Lorem ipsum dolor sit consiterie adcue c elict nadcr das
-              finbus et fi caree misere sae dj asd. Lorem ipsum dolor
-              sit consiterie adcue c elict nadcr das finbus et fi
-              caree misere sae dj asd.
+              Lorem ipsum dolor sit consiterie adcue c elict nadcr das finbus et
+              fi caree misere sae dj asd. Lorem ipsum dolor sit consiterie adcue
+              c elict nadcr das finbus et fi caree misere sae dj asd.
             </p>
           </nav>
         </div>
@@ -90,10 +82,9 @@ export default function Contact() {
             <div className="flex flex-col gap-5 pr-10">
               <b className="text-primary text-2xl">Virtualting</b>
               <p>
-                Lorem ipsum dolor sit consiterie adcue c elict nadcr
-                das finbus et fi caree misere sae dj asd. Lorem ipsum
-                dolor sit consiterie adcue c elict nadcr das finbus et
-                fi caree misere sae dj asd.
+                Lorem ipsum dolor sit consiterie adcue c elict nadcr das finbus
+                et fi caree misere sae dj asd. Lorem ipsum dolor sit consiterie
+                adcue c elict nadcr das finbus et fi caree misere sae dj asd.
               </p>
             </div>
             <figure className="">
@@ -107,10 +98,9 @@ export default function Contact() {
             <div className="flex flex-col gap-5 pl-10">
               <b className="text-primary text-2xl">Virtualting</b>
               <p>
-                Lorem ipsum dolor sit consiterie adcue c elict nadcr
-                das finbus et fi caree misere sae dj asd. Lorem ipsum
-                dolor sit consiterie adcue c elict nadcr das finbus et
-                fi caree misere sae dj asd.
+                Lorem ipsum dolor sit consiterie adcue c elict nadcr das finbus
+                et fi caree misere sae dj asd. Lorem ipsum dolor sit consiterie
+                adcue c elict nadcr das finbus et fi caree misere sae dj asd.
               </p>
             </div>
           </nav>
@@ -123,8 +113,8 @@ export default function Contact() {
           <p>Copyright ©️2020 Frontlett Ltd. All rights reserved.</p>
           <nav className="flex gap-1 item">
             <Link to="/">Privacy & Legal Policies</Link>|
-            <Link to=""> About Ads</Link>| Do Not Sell My Personal
-            Information | Cookie Preferences
+            <Link to=""> About Ads</Link>| Do Not Sell My Personal Information |
+            Cookie Preferences
           </nav>
         </div>
       </section>
@@ -136,9 +126,9 @@ export default function Contact() {
 // eslint-disable-next-line react/prop-types
 const Form = ({ setShowModal }) => {
   const [state, setState] = useState({
-    name: '',
-    email: '',
-    help: '',
+    name: "",
+    email: "",
+    help: "",
   });
 
   return (

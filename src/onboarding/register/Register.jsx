@@ -55,6 +55,7 @@ export default function Register() {
       formDetails.append("bank", state.bank);
       formDetails.append("acct_name", state.acct_name);
       formDetails.append("acct_no", state.acct_no);
+      formDetails.append("role", state.role);
       dispatch(register(formDetails));
     }
   };

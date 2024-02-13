@@ -133,7 +133,7 @@ export default function Home() {
                 those who need the services of a skilled workforce for a quarter
                 of the cost of the price.
               </p>
-              {user ? (
+              {Object.keys(user).length !== 0 ? (
                 <button
                   className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
                   onClick={() => navigate("/dashboard")}
@@ -163,7 +163,7 @@ export default function Home() {
                 those who need the services of a skilled workforce for a those
                 who need the services of the price
               </p>
-              {user ? (
+              {Object.keys(user).length !== 0 ? (
                 <button
                   className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
                   onClick={() => navigate("/dashboard")}
@@ -192,7 +192,7 @@ export default function Home() {
               <p className="md:text-xl">
                 quarter of the price.those who need the services of the price
               </p>
-              {user ? (
+              {Object.keys(user).length !== 0 ? (
                 <button
                   className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
                   onClick={() => navigate("/dashboard")}

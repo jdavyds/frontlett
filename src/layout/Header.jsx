@@ -55,7 +55,7 @@ export default function Header() {
           FAQ
         </NavLink>
       </nav>
-      {user ? (
+      {Object.keys(user).length !== 0 ? (
         <button
           className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
           onClick={() => navigate("/dashboard")}

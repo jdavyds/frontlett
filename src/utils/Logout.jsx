@@ -1,9 +1,8 @@
 import toast from "react-hot-toast";
-import { successStyle } from "./ToastStyle";
 import { persistor } from "../main";
 
 export function Logout(msg, route) {
-  const notifyLogout = (err) => toast.success(err, successStyle);
+  const notifyLogout = (err) => toast.success(err);
 
   persistor.purge().then(() => {
     window.localStorage.clear();

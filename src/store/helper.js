@@ -1,8 +1,8 @@
 import axios from "axios";
 
-
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/api",
+  baseURL: "https://frontlett.onrender.com/api",
 });
 
 api.interceptors.request.use(
@@ -19,7 +19,8 @@ api.interceptors.request.use(
 );
 
 export const base = axios.create({
-  baseURL: "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/api",
+  baseURL: "https://frontlett.onrender.com/api",
 });
 
 export function cleanUpResponse(res) {

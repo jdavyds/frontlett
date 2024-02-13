@@ -47,7 +47,7 @@ import dp4 from "../assets/dp4.svg";
 import dp5 from "../assets/dp5.svg";
 import ReactPlayer from "react-player";
 import wa from "../assets/wa.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaArrowRight,
   FaMoneyBill,
@@ -55,9 +55,12 @@ import {
   FaStar,
   FaUserAlt,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const ref = useRef(null);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.userDetails);
   const [pos, setPos] = useState(0);
   function scrollToStart() {
     const container = ref.current;
@@ -130,17 +133,24 @@ export default function Home() {
                 those who need the services of a skilled workforce for a quarter
                 of the cost of the price.
               </p>
-              <nav className="flex items-center gap-5">
-                <Link
-                  to="verify"
-                  className="flex justify-center items-center h-12 md:w-1/3 bg-primary text-white rounded-md"
+              {user ? (
+                <button
+                  className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
+                  onClick={() => navigate("/dashboard")}
                 >
-                  Register
-                </Link>
-                <button className="flex justify-center items-center h-12 md:w-1/3 bg-inherit text-white border border-primary rounded-md">
-                  Login
+                  Dashboard
                 </button>
-              </nav>
+              ) : (
+                <nav className="flex gap-5 items-center">
+                  <button>Login</button>
+                  <button
+                    className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
+                    onClick={() => navigate("/verify")}
+                  >
+                    Register
+                  </button>
+                </nav>
+              )}
             </div>
           </div>
           <div>
@@ -153,17 +163,24 @@ export default function Home() {
                 those who need the services of a skilled workforce for a those
                 who need the services of the price
               </p>
-              <nav className="flex items-center gap-5">
-                <Link
-                  to="verify"
-                  className="flex justify-center items-center h-12 md:w-1/3 bg-primary text-white rounded-md"
+              {user ? (
+                <button
+                  className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
+                  onClick={() => navigate("/dashboard")}
                 >
-                  Register
-                </Link>
-                <button className="flex justify-center items-center h-12 md:w-1/3 bg-inherit text-white border border-primary rounded-md">
-                  Login
+                  Dashboard
                 </button>
-              </nav>
+              ) : (
+                <nav className="flex gap-5 items-center">
+                  <button>Login</button>
+                  <button
+                    className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
+                    onClick={() => navigate("/verify")}
+                  >
+                    Register
+                  </button>
+                </nav>
+              )}
             </div>
           </div>
           <div>
@@ -175,17 +192,24 @@ export default function Home() {
               <p className="md:text-xl">
                 quarter of the price.those who need the services of the price
               </p>
-              <nav className="flex items-center gap-5">
-                <Link
-                  to="verify"
-                  className="flex justify-center items-center h-12 md:w-1/3 bg-primary text-white rounded-md"
+              {user ? (
+                <button
+                  className="px-10 h-10 bg-primary text-white font-[600] rounded-md w-fit"
+                  onClick={() => navigate("/dashboard")}
                 >
-                  Register
-                </Link>
-                <button className="flex justify-center items-center h-12 md:w-1/3 bg-inherit text-white border border-primary rounded-md">
-                  Login
+                  Dashboard
                 </button>
-              </nav>
+              ) : (
+                <nav className="flex gap-5 items-center">
+                  <button>Login</button>
+                  <button
+                    className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
+                    onClick={() => navigate("/verify")}
+                  >
+                    Register
+                  </button>
+                </nav>
+              )}
             </div>
           </div>
         </Slider>

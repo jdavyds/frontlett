@@ -23,6 +23,7 @@ export default function Register() {
     bank: "",
     acct_name: "",
     acct_no: "",
+    role: "employee",
   });
   const link = useSelector((state) => state.user.link);
   const message = useSelector((state) => state.user.message);
@@ -222,6 +223,28 @@ export default function Register() {
                 <FaEye className="text-gray-400" />
               )}
             </button>
+          </label>
+          <label className="flex items-center gap-5 col-span-2">
+            <div className="flex items-center gap-2">
+              <input
+                type="radio"
+                className="border rounded-md bg-inherit h-4 w-4"
+                value="employer"
+                name="role"
+                onChange={(e) => setState({ ...state, role: e.target.value })}
+              />
+              <span>Employer?</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="radio"
+                className="border rounded-md bg-inherit h-4 w-4"
+                value="employee"
+                name="role"
+                onChange={(e) => setState({ ...state, role: e.target.value })}
+              />
+              <span>Employee?</span>
+            </div>
           </label>
           <button
             type="submit"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isError, updateMessage } from "../../store/slices/userSlice";
 import toast from "react-hot-toast";
@@ -54,6 +54,7 @@ export default function Index() {
           onSubmit={handleSubmit}
         >
           <h1 className="mx-auto text-2xl">Enter Referral Code</h1>
+          <h1 className="mx-auto text-lg">Frontlett Code: 72839gj</h1>
           <label className="flex flex-col gap-2">
             <span>Referral Code</span>
             <input

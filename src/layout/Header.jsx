@@ -4,10 +4,12 @@ import menu from "../assets/menu.svg";
 import ham from "../assets/x.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [more, setMore] = useState(false);
+  const user = useSelector((state) => state.user.userDetails);
   const navigate = useNavigate();
   return (
     <header className="sticky top-0 left-0 z-[9999] bg-white text-[#404040] shadow-md px-5 md:px-20 py-5 flex justify-center items-center ">
@@ -53,15 +55,24 @@ export default function Header() {
           FAQ
         </NavLink>
       </nav>
-      <nav className="flex gap-5 items-center">
-        <button>Login</button>
+      {user ? (
         <button
           className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
-          onClick={() => navigate("/verify")}
+          onClick={() => navigate("/dashboard")}
         >
-          Register
+          Dashboard
         </button>
-      </nav>
+      ) : (
+        <nav className="flex gap-5 items-center">
+          <button>Login</button>
+          <button
+            className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
+            onClick={() => navigate("/verify")}
+          >
+            Register
+          </button>
+        </nav>
+      )}
       <div
         className={`absolute top-10 md:top-24 flex justify-center px-3 md:px-10 left-0 w-full h-fit z-[-900] text-[18px] transition-all duration-1000 ease-in-out  ${
           more ? "translate-y-0" : "translate-y-[-200%]"

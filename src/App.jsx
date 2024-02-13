@@ -6,7 +6,7 @@ import Employer from "./pages/Employer";
 import Virtuals from "./pages/Virtualt";
 import VerifyCode from "./onboarding/register";
 import Register from "./onboarding/register/Register";
-
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

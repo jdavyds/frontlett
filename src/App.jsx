@@ -7,7 +7,7 @@ import Virtuals from "./pages/Virtualt";
 import VerifyCode from "./onboarding/register";
 import Register from "./onboarding/register/Register";
 import Dashboard from "./pages/Dashboard";
-
+import Virt from "./pages/virt"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/virtualt-pricing",
+    element: <Virt />,
   },
 ]);
 

@@ -12,7 +12,7 @@ export default function Footer() {
             <Link to="/virtualt" className="hover:text-primary w-fit">
               Frontlett Talent Suite
             </Link>
-            <Link to="/" className="hover:text-primary w-fit">
+            <Link to="/employer" className="hover:text-primary w-fit">
               Frontlett Hire
             </Link>
             <Link to="/" className="hover:text-primary w-fit">

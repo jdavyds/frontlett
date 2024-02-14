@@ -10,8 +10,10 @@ export default {
       colors: {
         primary: '#1279E0',
         secondary: "#1A3047",
+        tertiary: "#FC5D3D",
         bold: '#1279E0',
         light: '#00000087',
+        "light-bg": "#E3EFFB"
       },
     },
   },

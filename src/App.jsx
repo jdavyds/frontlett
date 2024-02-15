@@ -9,7 +9,7 @@ import Register from "./onboarding/register/Register";
 import Dashboard from "./pages/Dashboard";
 import Virt from "./pages/virt";
 import Employ from "./pages/employ";
-
+import Contacts from "./pages/contact";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/pitch",
     element: <Pitch />,
+  },
+  {
+    path: "/contact-us",
+    element: <Contacts />,
   },
   {
     path: "/employer-calculator",

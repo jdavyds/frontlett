@@ -1,28 +1,30 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+import Pitch from "./pages/Pitch";
 import Employer from "./pages/Employer";
 import Virtuals from "./pages/Virtualt";
 import VerifyCode from "./onboarding/register";
 import Register from "./onboarding/register/Register";
 import Dashboard from "./pages/Dashboard";
-import Virt from "./pages/virt"
+import Virt from "./pages/virt";
+import Employ from "./pages/employ";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
   {
-    path: "/contact-us",
-    element: <Contact />,
+    path: "/pitch",
+    element: <Pitch />,
   },
   {
-    path: "/employer",
+    path: "/employer-calculator",
     element: <Employer />,
   },
   {
-    path: "/virtualt",
+    path: "/virtualt-calculator",
     element: <Virtuals />,
   },
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/virtualt-pricing",
     element: <Virt />,
+  },
+  {
+    path: "/employer-pricing",
+    element: <Employ />,
   },
 ]);
 

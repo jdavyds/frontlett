@@ -4,28 +4,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
+import ScrollToTop from "../layout/Scroll";
 
 export default function Virtualt() {
   const [currency, setCurrency] = useState("naira");
-  const handleCurrency = (event) => {
-    setCurrency(event.target.value);
-  };
   const [position, setPosition] = useState("");
   const [level, setLevel] = useState("");
   const [slots, setSlots] = useState(1);
   const [frontlettSalary, setFrontlettSalary] = useState(0);
-
-  const handleChangePosition = (e) => {
-    setPosition(e.target.value);
-  };
-
-  const handleChangeLevel = (e) => {
-    setLevel(e.target.value);
-  };
-
-  const handleChangeSlots = (e) => {
-    setSlots(parseInt(e.target.value));
-  };
 
   useEffect(() => {
     const calculateFrontlettSalary = () => {
@@ -82,6 +68,7 @@ export default function Virtualt() {
 
   return (
     <main className="bg-[#E5E5E5]">
+      <ScrollToTop />
       <Header />
       <section className="flex flex-col gap-5 justify-center items-center text-center py-12 md:py-16">
         <b className="text-bold text-3xl">
@@ -108,7 +95,7 @@ export default function Virtualt() {
               <FormControl sx={{ minWidth: 150 }}>
                 <Select
                   value={currency}
-                  onChange={handleCurrency}
+                  onChange={(e) => setCurrency(e.target.value)}
                   displayEmpty
                   sx={{
                     height: 40,
@@ -179,7 +166,7 @@ export default function Virtualt() {
                   <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={position}
-                      onChange={handleChangePosition}
+                      onChange={(e) => setPosition(e.target.value)}
                       displayEmpty
                       sx={{
                         height: 40,
@@ -201,7 +188,7 @@ export default function Virtualt() {
                   <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={level}
-                      onChange={handleChangeLevel}
+                      onChange={(e) => setLevel(e.target.value)}
                       displayEmpty
                       sx={{
                         height: 40,
@@ -219,7 +206,7 @@ export default function Virtualt() {
                   <FormControl sx={{ minWidth: "100%" }}>
                     <Select
                       value={slots}
-                      onChange={handleChangeSlots}
+                      onChange={(e) => setSlots(parseInt(e.target.value))}
                       displayEmpty
                       sx={{
                         height: 40,

@@ -5,12 +5,13 @@ import contact3 from "../assets/contact3.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import cancel from "../assets/x.svg";
+import ScrollToTop from "../layout/Scroll";
 
-export default function Contact() {
+export default function Pitch() {
   const [showModal, setShowModal] = useState(false);
-
   return (
     <main>
+      <ScrollToTop />
       <Header />
       <section className="h-[90vh] flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
         <div className="flex flex-col gap-3 md:gap-6 md:w-1/2 px-5 md:px-20 py-10">

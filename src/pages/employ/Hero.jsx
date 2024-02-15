@@ -9,7 +9,7 @@ export default function Hero() {
         Our plans have been carefully arranged to suit you. You can change your
         plan or cancel whenever you decide.
       </p>
-      <b className="text-xl">Virtualt Pricing</b>
+      <b className="text-xl">Employer Pricing</b>
     </div>
   );
 }

@@ -56,6 +56,7 @@ import {
   FaUserAlt,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import ScrollToTop from "../layout/Scroll";
 
 export default function Home() {
   const ref = useRef(null);
@@ -108,6 +109,7 @@ export default function Home() {
 
   return (
     <main>
+      <ScrollToTop />
       <div className="flex text-xs gap-1 items-center justify-center text-[#00000087] py-1">
         <span className="flex items-center gap-1">
           Reach us on <img src={wa} alt="" /> Nigeria: 0700-STAFF-SHARE

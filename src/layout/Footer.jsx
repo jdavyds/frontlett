@@ -1,11 +1,16 @@
-
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="flex flex-col bg-white text-[#1A3047B2] gap-5 md:gap-20 px-5 md:px-20 pt-20">
-      <div className="flex flex-col gap-10 md:grid grid-cols-5 ">
+      <div className="flex flex-col gap-10 md:grid grid-cols-5 border-t pt-10">
         <nav className="flex flex-col gap-3 md:gap-5">
           <b className="font-[500] md:font-[800] text-lg">Products</b>
           <ul className="flex flex-col gap-3">
@@ -36,7 +41,7 @@ export default function Footer() {
           </ul>
         </nav>
         <nav className="flex flex-col gap-3 md:gap-5">
-          <b className="font-[500] md:font-[800] text-lg">Products</b>
+          <b className="font-[500] md:font-[800] text-lg">Company</b>
           <ul className="flex flex-col gap-3">
             <Link to="/" className="hover:text-primary w-fit">
               About Us
@@ -53,27 +58,31 @@ export default function Footer() {
             <Link to="/" className="hover:text-primary w-fit">
               Events
             </Link>
-            <Link to="/" className="hover:text-primary w-fit">
+            <Link to="/pitch" className="hover:text-primary w-fit">
+              Pitch
+            </Link>
+            <Link to="/contact-us" className="hover:text-primary w-fit">
               Contact Us
             </Link>
           </ul>
         </nav>
         <nav className="flex flex-col gap-3 md:gap-5">
-          <b className="font-[500] md:font-[800] text-lg">
-            Resources
-          </b>
+          <b className="font-[500] md:font-[800] text-lg">Resources</b>
           <ul className="flex flex-col gap-3">
             <Link to="/" className="hover:text-primary w-fit">
               Resources center
+            </Link>
+            <Link to="/employer-calculator" className="hover:text-primary w-fit">
+              Employer Calculator
+            </Link>
+            <Link to="/virtualt-calculator" className="hover:text-primary w-fit">
+              Virtualt Calculator
             </Link>
             <Link to="/" className="hover:text-primary w-fit">
               Blog
             </Link>
             <Link to="/" className="hover:text-primary w-fit">
               Inside Frontlett Blog
-            </Link>
-            <Link to="/" className="hover:text-primary w-fit">
-              Frontlett Engineering Blog
             </Link>
           </ul>
         </nav>
@@ -97,11 +106,9 @@ export default function Footer() {
         <nav className="flex flex-col gap-3 md:gap-5">
           <b className="font-[500] md:font-[800] text-lg">Contact</b>
           <nav className="px-8 h-12 bg-[#1A30472E] text-[#1A3047] flex justify-center items-center rounded-md">
-            080 123 4567 89{' '}
+            080 123 4567 89{" "}
           </nav>
-          <b className="font-[500] md:font-[800] text-lg">
-            Follow us
-          </b>
+          <b className="font-[500] md:font-[800] text-lg">Follow us</b>
           <nav className="flex gap-1 items-center text-lg">
             <span className="rounded-[50%] h-10 w-10 border flex justify-center items-center">
               <FaFacebook />
@@ -138,14 +145,12 @@ export default function Footer() {
         </nav>
       </div>
       <div className="text-sm py-4 border-t border-white flex justify-between items-center">
-        <span>
-          Copyright ©️2020 Frontlett Ltd. All rights reserved.
-        </span>
+        <span>Copyright ©️2020 Frontlett Ltd. All rights reserved.</span>
         <nav className="flex gap-1 items-center">
           <Link to="/" className="">
             Privacy & Legal Policies
-          </Link>{' '}
-          |{' '}
+          </Link>{" "}
+          |{" "}
           <Link to="/" className="">
             About Ads
           </Link>

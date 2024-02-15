@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import ScrollToTop from "../layout/Scroll";
 
 export default function Employer() {
   const [currency, setCurrency] = useState("naira");
@@ -139,6 +140,7 @@ export default function Employer() {
 
   return (
     <main className="bg-[#E5E5E5]">
+      <ScrollToTop />
       <Header />
       <section className="flex flex-col gap-5 justify-center items-center text-center py-12 md:py-16">
         <b className="text-bold text-3xl">
@@ -288,9 +290,7 @@ export default function Employer() {
                     onClick={handleAddVirtualt}
                   >
                     <span> Add a Virtualt</span>
-                    <FaPlus
-                      className="text-bold text-sm"
-                    />
+                    <FaPlus className="text-bold text-sm" />
                   </span>
                 </td>
                 <td></td>

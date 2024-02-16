@@ -5,7 +5,9 @@ import Pitch from "./pages/Pitch";
 import Employer from "./pages/Employer";
 import Virtuals from "./pages/Virtualt";
 import VerifyCode from "./onboarding/register";
-import Register from "./onboarding/register/Register";
+// import Register from "./onboarding/registerr/Register";
+import RegisterVirtualt from "./onboarding/register/virtualt";
+import Activate from "./onboarding/register/virtualt/Activate";
 import Dashboard from "./pages/Dashboard";
 import Virt from "./pages/virt";
 import Employ from "./pages/employ";
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
     element: <VerifyCode />,
   },
   {
-    path: "/register",
-    element: <Register />,
+    path: "/onboard/virtualt",
+    element: <RegisterVirtualt />,
+  },
+  {
+    path: "/onboarding/register/virtualt/activate",
+    element: <Activate />,
   },
   {
     path: "/dashboard",

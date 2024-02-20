@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isError, updateMessage } from "../../../store/slices/userSlice";
 import toast from "react-hot-toast";
-import { register } from "../../../store/asyncActions/userAsyncActions";
 
 export default function Skill() {
   const navigate = useNavigate();
@@ -22,17 +21,7 @@ export default function Skill() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/activate/skill");
-    if (
-      state.skills &&
-      state.preference &&
-      state.level &&
-      state.titles &&
-      state.dp
-    ) {
-      const formDetails = new FormData();
-      dispatch(register(formDetails));
-    }
+    navigate("/onboard/virtualt/quiz");
   };
 
   const [dpUrl, setDpUrl] = useState(null);
@@ -137,7 +126,6 @@ export default function Skill() {
               Upload Photo
               <input
                 type="file"
-                required
                 className="border rounded-md bg-inherit h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer"
                 onChange={(e) => setState({ ...state, dp: e.target.files[0] })}
               />

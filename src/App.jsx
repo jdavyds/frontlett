@@ -16,6 +16,8 @@ import Pinfo from "./onboarding/register/virtualt/PI";
 import Education from "./onboarding/register/virtualt/Education";
 import Work from "./onboarding/register/virtualt/Work";
 import Skill from "./onboarding/register/virtualt/Skill";
+import Quiz from "./onboarding/register/virtualt/Quiz";
+import Result from "./onboarding/register/virtualt/Result";
 import ActivateEmp from "./onboarding/register/employer/";
 import PinfoEmp from "./onboarding/register/employer/PI";
 import JobInfo from "./onboarding/register/employer/JobInfo";
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
         element: <Skill />,
       },
     ],
+  },
+  {
+    path: "/onboard/virtualt/quiz",
+    element: <Quiz />,
+  },
+  {
+    path: "onboard/virtualt/result",
+    element: <Result />,
   },
   {
     path: "/onboard/employer",

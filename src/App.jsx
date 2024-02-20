@@ -12,6 +12,11 @@ import Dashboard from "./pages/Dashboard";
 import Virt from "./pages/virt";
 import Employ from "./pages/employ";
 import Contacts from "./pages/contact";
+import Pinfo from "./onboarding/register/virtualt/PI";
+import Education from "./onboarding/register/virtualt/Education";
+import Work from "./onboarding/register/virtualt/Work";
+import Skill from "./onboarding/register/virtualt/Skill";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,8 +47,26 @@ const router = createBrowserRouter([
     element: <RegisterVirtualt />,
   },
   {
-    path: "/onboarding/register/virtualt/activate",
+    path: "/onboarding/virtualt/activate",
     element: <Activate />,
+    children: [
+      {
+        path: "",
+        element: <Pinfo />,
+      },
+      {
+        path: "educational-information",
+        element: <Education />,
+      },
+      {
+        path: "work-history",
+        element: <Work />,
+      },
+      {
+        path: "skill",
+        element: <Skill />,
+      },
+    ],
   },
   {
     path: "/dashboard",

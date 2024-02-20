@@ -16,11 +16,11 @@ export default function Activate() {
           dolor sit amet consectet tempor dolor sit amet
         </p>
       </div>
-      <nav className="md:w-1/2 mx-auto bg-white flex md:grid grid-cols-4 gap-5 md:gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-5 md:py-10">
+      <nav className="md:w-1/2 mx-auto bg-white flex md:grid grid-cols-4 gap-5 md:gap-10 rounded-2xl shadow-2xl mb-10 px-5 md:px-20 py-5 md:py-10">
         <nav className="flex items-center gap-4">
           <span
             className={`rounded flex items-center justify-center h-10 px-4 text-white ${
-              pathname === "/onboarding/register/virtualt/activate"
+              pathname === "/onboarding/virtualt/activate"
                 ? "bg-primary"
                 : "bg-[#C4C4C466]"
             }`}
@@ -33,7 +33,7 @@ export default function Activate() {
           <span
             className={`rounded flex items-center justify-center h-10 px-4 text-white ${
               pathname ===
-              "/onboarding/register/virtualt/activate/educational-information"
+              "/onboarding/virtualt/activate/educational-information"
                 ? "bg-primary"
                 : "bg-[#C4C4C466]"
             }`}
@@ -45,7 +45,7 @@ export default function Activate() {
         <nav className="flex items-center gap-4">
           <span
             className={`rounded flex items-center justify-center h-10 px-4 text-white ${
-              pathname === "/onboarding/register/virtualt/activate/work-history"
+              pathname === "/onboarding/virtualt/activate/work-history"
                 ? "bg-primary"
                 : "bg-[#C4C4C466]"
             }`}
@@ -57,7 +57,7 @@ export default function Activate() {
         <nav className="flex items-center gap-4">
           <span
             className={`rounded flex items-center justify-center h-10 px-4 text-white ${
-              pathname === "/onboarding/register/virtualt/activate/skill"
+              pathname === "/onboarding/virtualt/activate/skill"
                 ? "bg-primary"
                 : "bg-[#C4C4C466]"
             }`}
@@ -67,7 +67,7 @@ export default function Activate() {
           <span className="">Skill</span>
         </nav>
       </nav>
-      <div>
+      <div className="py-10">
         <Outlet />
       </div>
       <Footer />

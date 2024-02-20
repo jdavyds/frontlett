@@ -31,7 +31,7 @@ export default function Pi() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboarding/virtualt/activate/educational-information");
+    navigate("/onboard/virtualt/activate/educational-information");
   };
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function Pi() {
 
   return (
     <form className="flex flex-col gap-10 md:w-1/2 mx-auto" onSubmit={handleSubmit}>
-      <div className="w-full bg-white flex flex-col md:grid grid-cols2 gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-10 md:py-20">
+      <div className="w-full bg-white flex flex-col md:grid grid-cols-2 gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-10 md:py-20">
         <div className="flex flex-col col-span-2">
           <span className="text-[#C4C4C4] text-sm">1/4</span>
           <h1 className="text-secondary font-bold text-2xl md:text-3xl">

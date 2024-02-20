@@ -117,7 +117,7 @@ export default function Index() {
             />
           </label>
           <Link
-            to={"/onboarding/virtualt/activate"}
+            to={"/onboard/virtualt/activate"}
             // type="submit"
             className={`w-full bg-secondary font-medium text-white rounded-md flex justify-center items-center px-5 h-12
             ${loading ? "animate-pulse duration-500 cursor-not-allowed" : ""}`}

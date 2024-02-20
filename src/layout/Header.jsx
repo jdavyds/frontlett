@@ -120,7 +120,7 @@ export default function Header() {
           <button>Login</button>
           <button
             className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
-            onClick={() => navigate("/verify")}
+            onClick={() => navigate("/register")}
           >
             Register
           </button>

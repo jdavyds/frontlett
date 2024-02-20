@@ -24,7 +24,7 @@ export default function Work() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboarding/virtualt/activate/skill");
+    navigate("/onboard/virtualt/activate/skill");
     if (
       state.organization &&
       state.role &&
@@ -59,7 +59,7 @@ export default function Work() {
       className="flex flex-col gap-10 md:w-1/2 mx-auto"
       onSubmit={handleSubmit}
     >
-      <div className="w-full bg-white flex flex-col md:grid grid-cols2 gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-10 md:py-20">
+      <div className="w-full bg-white flex flex-col md:grid grid-cols-2 gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-10 md:py-20">
         <div className="flex flex-col col-span-2">
           <span className="text-[#C4C4C4] text-sm">3/4</span>
           <h1 className="text-secondary font-bold text-2xl md:text-3xl">
@@ -134,7 +134,7 @@ export default function Work() {
             <option value="No">No</option>
           </select>
         </label>
-        <label className="flex flex-col gap-2 col-span-2">
+        <label className="flex flex-col gap-2">
           <span>Preferred Work Time</span>
           <select
             required
@@ -153,8 +153,8 @@ export default function Work() {
       <div className="flex justify-between items-center gap-5">
         <button
           type="button"
-          className="w-fit border border-[#00000087] bg-inherit font-medium rounded-md flex justify-center items-center px-10 h-12"
-          onClick={() => navigate("/onboarding/virtualt/activate/work-history")}
+          className="w-fit border text-[#00000087] border-[#00000087] bg-inherit font-medium rounded-md flex justify-center items-center px-10 h-12"
+          onClick={() => navigate("/onboard/virtualt/activate/educational-information")}
         >
           Back
         </button>

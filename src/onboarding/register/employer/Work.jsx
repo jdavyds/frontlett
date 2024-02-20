@@ -3,18 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isError, updateMessage } from "../../../store/slices/userSlice";
 import toast from "react-hot-toast";
-import { register } from "../../../store/asyncActions/userAsyncActions";
 
-export default function Education() {
+export default function Work() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, setState] = useState({
-    qualification: "",
-    institution: "",
-    from: "",
-    to: "",
-    course: "",
-    degree: "",
+    companyName: "",
+    companyEmail: "",
+    logo: "",
   });
   const link = useSelector((state) => state.user.link);
   const message = useSelector((state) => state.user.message);
@@ -23,19 +19,16 @@ export default function Education() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/activate/work-history");
-    if (
-      state.qualification &&
-      state.institution &&
-      state.from &&
-      state.to &&
-      state.course &&
-      state.degree
-    ) {
-      const formDetails = new FormData();
-      dispatch(register(formDetails));
-    }
+    navigate("/onboard/employer/job-information");
   };
+
+  const [logoUrl, setLogoUrl] = useState(null);
+
+  useEffect(() => {
+    if (state.dp) {
+      setLogoUrl(URL.createObjectURL(state.dp));
+    }
+  }, [state.dp]);
 
   useEffect(() => {
     if (message === "Registration Successful") {
@@ -59,72 +52,61 @@ export default function Education() {
     >
       <div className="w-full bg-white flex flex-col md:grid grid-cols-2 gap-10 rounded-2xl shadow-2xl px-5 md:px-20 py-10 md:py-20">
         <div className="flex flex-col col-span-2">
-          <span className="text-[#C4C4C4] text-sm">2/4</span>
+          <span className="text-[#C4C4C4] text-sm">2/3</span>
           <h1 className="text-secondary font-bold text-2xl md:text-3xl">
-            Education Information
+            Work Information
           </h1>
         </div>
+
         <label className="flex flex-col gap-2 col-span-2">
-          <span>Highest Qualification</span>
-          <select
-            required
-            className="w-full border rounded-md bg-inherit h-12 px-5"
-            onChange={(e) =>
-              setState({ ...state, qualification: e.target.value })
-            }
-          >
-            <option value="">Select</option>
-            <option value="BSc">BSc</option>
-            <option value="MSc">MSc</option>
-            <option value="PhD">PhD</option>
-          </select>
-        </label>
-        <label className="flex flex-col gap-2 col-span-2">
-          <span>Institution</span>
+          <span>Name of Company (or Project)</span>
           <input
             type="text"
-            placeholder="Enter institution"
+            placeholder=""
             required
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
-              setState({ ...state, institution: e.target.value })
+              setState({ ...state, companyName: e.target.value })
+            }
+          />
+        </label>
+        <label className="flex flex-col gap-2 col-span-2">
+          <span>Company Email (optional)</span>
+          <input
+            type="email"
+            placeholder=""
+            className="w-full border rounded-md bg-inherit h-12 px-5"
+            onChange={(e) =>
+              setState({ ...state, companyEmail: e.target.value })
             }
           />
         </label>
         <label className="flex flex-col gap-2">
-          <span>From</span>
-          <input
-            type="date"
-            required
-            className="w-full border rounded-md bg-inherit h-12 px-5"
-            onChange={(e) => setState({ ...state, from: e.target.value })}
-          />
-        </label>
-        <label className="flex flex-col gap-2">
-          <span>To</span>
-          <input
-            type="date"
-            required
-            className="w-full border rounded-md bg-inherit h-12 px-5"
-            onChange={(e) => setState({ ...state, to: e.target.value })}
-          />
-        </label>
-        <label className="flex flex-col gap-2 col-span-2">
-          <span>Course of Study</span>
-          <input
-            type="text"
-            placeholder="Enter course of study"
-            required
-            className="w-full border rounded-md bg-inherit h-12 px-5"
-            onChange={(e) => setState({ ...state, course: e.target.value })}
-          />
+          <span>Company Logo</span>
+          <div className="flex gap-4 items-center">
+            <figure className="w-28 h-28 rounded bg-[#C4C4C4] flex justify-center items-center">
+              {logoUrl && (
+                <img src={logoUrl} alt="Display" className="object-contain" />
+              )}
+            </figure>
+            <nav className="relative border h-12 w-fit px-10 rounded bg-inherit flex items-center justify-center">
+              Upload Logo
+              <input
+                type="file"
+                className="border rounded-md bg-inherit h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer"
+                onChange={(e) => setState({ ...state, dp: e.target.files[0] })}
+              />
+            </nav>
+          </div>
         </label>
       </div>
       <div className="flex justify-between items-center gap-5">
         <button
           type="button"
-          className="w-fit border border-[#00000087] bg-inherit font-medium rounded-md flex justify-center items-center px-10 h-12"
-          onClick={() => navigate("/onboard/virtualt/activate")}
+          className="w-fit border text-[#00000087] border-[#00000087] bg-inherit font-medium rounded-md flex justify-center items-center px-10 h-12"
+          onClick={() =>
+            navigate("/onboard/employer")
+          }
         >
           Back
         </button>

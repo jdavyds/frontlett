@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
-import { register } from "../../../store/asyncActions/userAsyncActions";
+import { createWorkHistory } from "../../../store/asyncActions/onboardAsyncActions";
 
 export default function Work() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.onboard.workHistory);
   const [state, setState] = useState({
-    organization: "",
-    role: "",
-    from: "",
-    to: "",
-    area: "",
-    minimum: "",
-    time: "",
+    organization: user.organization || "",
+    role: user.role || "",
+    from: user.from || "",
+    to: user.to || "",
+    area: user.area || "",
+    minimum: user.minimum || "",
+    time: user.time || "",
   });
-  const link = useSelector((state) => state.user.link);
-  const message = useSelector((state) => state.user.message);
-  const error = useSelector((state) => state.user.error);
-  const loading = useSelector((state) => state.user.loading);
+  
+  const message = useSelector((state) => state.onboard.message);
+  const error = useSelector((state) => state.onboard.error);
+  const loading = useSelector((state) => state.onboard.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/activate/skill");
     if (
       state.organization &&
       state.role &&
@@ -35,17 +35,24 @@ export default function Work() {
       state.time
     ) {
       const formDetails = new FormData();
-      dispatch(register(formDetails));
+      formDetails.append("organization", state.organization);
+      formDetails.append("role", state.role);
+      formDetails.append("workFrom", state.from);
+      formDetails.append("workTo", state.to);
+      formDetails.append("specialization", state.area);
+      formDetails.append("willWork", state.minimum);
+      formDetails.append("workTime", state.time);
+      dispatch(createWorkHistory(formDetails));
     }
   };
 
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "User Work History Updated") {
       toast.success(message);
+      navigate("/onboard/virtualt/activate/skill");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch,]);
 
   useEffect(() => {
     if (error) {
@@ -73,9 +80,10 @@ export default function Work() {
             type="text"
             placeholder="Enter organization"
             required
+            value={state.organization}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
-              setState({ ...state, institution: e.target.value })
+              setState({ ...state, organization: e.target.value })
             }
           />
         </label>
@@ -85,6 +93,7 @@ export default function Work() {
             type="text"
             placeholder="Enter role"
             required
+            value={state.role}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, role: e.target.value })}
           />
@@ -95,6 +104,7 @@ export default function Work() {
             type="date"
             placeholder="Enter start date"
             required
+            value={state.from}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, from: e.target.value })}
           />
@@ -105,6 +115,7 @@ export default function Work() {
             type="date"
             placeholder="Enter end date"
             required
+            value={state.to}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, to: e.target.value })}
           />
@@ -115,6 +126,7 @@ export default function Work() {
             type="text"
             placeholder="Enter area of specialization"
             required
+            value={state.area}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, area: e.target.value })}
           />
@@ -126,18 +138,20 @@ export default function Work() {
           </span>
           <select
             required
+            value={state.minimum}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, minimum: e.target.value })}
           >
             <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </label>
         <label className="flex flex-col gap-2">
           <span>Preferred Work Time</span>
           <select
             required
+            value={state.time}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, time: e.target.value })}
           >

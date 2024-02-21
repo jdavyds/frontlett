@@ -1,31 +1,40 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
+import { createSkills } from "../../../store/asyncActions/onboardAsyncActions";
 
 export default function Skill() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.onboard.skills);
   const [state, setState] = useState({
-    skills: "",
-    preference: "",
-    level: "",
-    titles: "",
-    dp: "",
+    skills: user.skills || "",
+    preference: user.preference || "",
+    level: user.level || "",
+    titles: user.titles || "",
+    dp: user.dp || "",
   });
-  const link = useSelector((state) => state.user.link);
-  const message = useSelector((state) => state.user.message);
-  const error = useSelector((state) => state.user.error);
-  const loading = useSelector((state) => state.user.loading);
+
+  const message = useSelector((state) => state.onboard.message);
+  const error = useSelector((state) => state.onboard.error);
+  const loading = useSelector((state) => state.onboard.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/quiz");
+    if (state.skills && state.preference && state.level && state.titles) {
+      const formDetails = new FormData();
+      formDetails.append("skills", state.skills);
+      formDetails.append("preference", state.preference);
+      formDetails.append("level", state.level);
+      formDetails.append("titles", state.titles);
+      dispatch(createSkills(formDetails));
+    }
   };
-
+  
   const [dpUrl, setDpUrl] = useState(null);
-
+  
   useEffect(() => {
     if (state.dp) {
       setDpUrl(URL.createObjectURL(state.dp));
@@ -33,12 +42,12 @@ export default function Skill() {
   }, [state.dp]);
 
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "User Skills Updated") {
       toast.success(message);
+      navigate("/onboard/virtualt/quiz");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -63,6 +72,7 @@ export default function Skill() {
           <span>Skills I want to offer</span>
           <select
             required
+            value={state.skills}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, skills: e.target.value })}
           >
@@ -84,6 +94,7 @@ export default function Skill() {
           <span>Work option preference</span>
           <select
             required
+            value={state.preference}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, preference: e.target.value })}
           >
@@ -96,6 +107,7 @@ export default function Skill() {
           <span>Skill Level</span>
           <select
             required
+            value={state.level}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, level: e.target.value })}
           >
@@ -110,6 +122,7 @@ export default function Skill() {
           <textarea
             placeholder="Enter job titles"
             required
+            value={state.titles}
             className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
             onChange={(e) => setState({ ...state, titles: e.target.value })}
           />
@@ -126,6 +139,7 @@ export default function Skill() {
               Upload Photo
               <input
                 type="file"
+                value={state.dp}
                 className="border rounded-md bg-inherit h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer"
                 onChange={(e) => setState({ ...state, dp: e.target.files[0] })}
               />

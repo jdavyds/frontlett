@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
 import Header from "../../../layout/Header";
 import Footer from "../../../layout/Footer";
-import { verifyCode } from "../../../store/asyncActions/userAsyncActions";
+import { register } from "../../../store/asyncActions/userAsyncActions";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -22,20 +22,27 @@ export default function Index() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (state) {
+    if (state.password && state.password !== state.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    if (state.email && state.username && state.password) {
       const formDetails = new FormData();
-      formDetails.append("code", state);
-      dispatch(verifyCode(formDetails));
+      formDetails.append("email", state.email);
+      formDetails.append("username", state.username);
+      formDetails.append("password", state.password);
+      dispatch(register(formDetails));
     }
   };
 
   useEffect(() => {
-    if (message) {
+    if (message === "User Created") {
       toast.success(message);
-      navigate("/register");
+      navigate("/onboard/virtualt/activate");
       dispatch(updateMessage(""));
     }
-  }, [navigate, message, dispatch, state.email]);
+  }, [navigate, message, dispatch]);
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -116,14 +123,13 @@ export default function Index() {
               }
             />
           </label>
-          <Link
-            to={"/onboard/virtualt/activate"}
-            // type="submit"
+          <button
+            type="submit"
             className={`w-full bg-secondary font-medium text-white rounded-md flex justify-center items-center px-5 h-12
             ${loading ? "animate-pulse duration-500 cursor-not-allowed" : ""}`}
           >
             Sign Up
-          </Link>
+          </button>
         </form>
       </div>
       <Footer />

@@ -1,24 +1,34 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../layout/Footer";
 import Header from "../../../layout/Header";
 import ScrollToTop from "../../../layout/Scroll";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { updateScore } from "../../../store/slices/onboardSlice";
 
 export default function Index() {
   const navigate = useNavigate();
-  const loading = useSelector((state) => state.user.loading);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/onboard/virtualt/result");
-  };
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.onboard.loading);
+  
   const [state, setState] = useState({
     pressure: "",
     remote: "",
     internet: "",
     about: "",
   });
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let score = 0;
+    score += state.pressure.toLowerCase() === 'yes' ? 25 : 0;
+    score += state.remote.toLowerCase() === 'yes' ? 25 : 0;
+    score += state.internet.toLowerCase() === 'yes' ? 25 : 0;
+    score += state.about.trim() !== '' ? 25 : 0;
+  
+    dispatch(updateScore(score))
+    navigate("/onboard/virtualt/result");
+  };
+  
   return (
     <main className="flex flex-col bg-[#AFAFAF1A]">
       <ScrollToTop />
@@ -136,6 +146,7 @@ export default function Index() {
             <span>4. Tell us about your last remote engagement?</span>
             <textarea
               className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
+              value={state.about}
               onChange={(e) => setState({ ...state, about: e.target.value })}
             />
           </label>

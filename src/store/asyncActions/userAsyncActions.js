@@ -6,7 +6,6 @@ import {
   isLoading,
   isVerified,
   updateRole,
-  updateLink,
 } from "../slices/userSlice";
 
 export const register = (data) => (dispatch) => {
@@ -22,8 +21,7 @@ export const register = (data) => (dispatch) => {
       };
       localStorage.setItem("frontlett::auth", JSON.stringify(auth));
       dispatch(updateUser(user));
-      dispatch(updateLink(data.link));
-      dispatch(updateMessage("Registration Successful"));
+      dispatch(updateMessage("User Created"));
       dispatch(isVerified());
       dispatch(updateRole(user?.role));
       

@@ -1,49 +1,52 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
-import { register } from "../../../store/asyncActions/userAsyncActions";
+import { createEducation } from "../../../store/asyncActions/onboardAsyncActions";
 
 export default function Education() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.onboard.education);
   const [state, setState] = useState({
-    qualification: "",
-    institution: "",
-    from: "",
-    to: "",
-    course: "",
-    degree: "",
+    qualification: user.qualification || "",
+    institution: user.institution || "",
+    from: user.from || "",
+    to: user.to || "",
+    course: user.course || "",
   });
-  const link = useSelector((state) => state.user.link);
-  const message = useSelector((state) => state.user.message);
-  const error = useSelector((state) => state.user.error);
-  const loading = useSelector((state) => state.user.loading);
+
+  const message = useSelector((state) => state.onboard.message);
+  const error = useSelector((state) => state.onboard.error);
+  const loading = useSelector((state) => state.onboard.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/activate/work-history");
     if (
       state.qualification &&
       state.institution &&
       state.from &&
       state.to &&
-      state.course &&
-      state.degree
+      state.course 
     ) {
       const formDetails = new FormData();
-      dispatch(register(formDetails));
+      formDetails.append("qualification", state.qualification);
+      formDetails.append("institution", state.institution);
+      formDetails.append("from", state.from);
+      formDetails.append("to", state.to);
+      formDetails.append("course", state.course);
+      dispatch(createEducation(formDetails));
     }
   };
 
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "User Education Updated") {
       toast.success(message);
+      navigate("/onboard/virtualt/activate/work-history");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -68,6 +71,7 @@ export default function Education() {
           <span>Highest Qualification</span>
           <select
             required
+            value={state.qualification}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
               setState({ ...state, qualification: e.target.value })
@@ -85,6 +89,7 @@ export default function Education() {
             type="text"
             placeholder="Enter institution"
             required
+            value={state.institution}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
               setState({ ...state, institution: e.target.value })
@@ -96,6 +101,7 @@ export default function Education() {
           <input
             type="date"
             required
+            value={state.from}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, from: e.target.value })}
           />
@@ -105,6 +111,7 @@ export default function Education() {
           <input
             type="date"
             required
+            value={state.to}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, to: e.target.value })}
           />
@@ -115,6 +122,7 @@ export default function Education() {
             type="text"
             placeholder="Enter course of study"
             required
+            value={state.course}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, course: e.target.value })}
           />

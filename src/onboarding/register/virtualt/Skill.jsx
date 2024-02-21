@@ -23,18 +23,19 @@ export default function Skill() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(state);
     if (state.skills && state.preference && state.level && state.titles) {
       const formDetails = new FormData();
-      formDetails.append("skills", state.skills);
-      formDetails.append("preference", state.preference);
-      formDetails.append("level", state.level);
-      formDetails.append("titles", state.titles);
+      formDetails.append("skill", state.skills);
+      formDetails.append("workOption", state.preference);
+      formDetails.append("skillLevel", state.level);
+      formDetails.append("jobTitles", state.titles);
       dispatch(createSkills(formDetails));
     }
   };
-  
+
   const [dpUrl, setDpUrl] = useState(null);
-  
+
   useEffect(() => {
     if (state.dp) {
       setDpUrl(URL.createObjectURL(state.dp));

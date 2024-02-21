@@ -62,19 +62,19 @@ export default function Index() {
                     setState({ ...state, pressure: e.target.value })
                   }
                 />
-                <span>Employer?</span>
+                <span>Yes</span>
               </div>
               <div className="flex items-center gap-2">
                 <input
                   type="radio"
                   className="border rounded-md bg-inherit h-4 w-4"
-                  value="employee"
+                  value="no"
                   name="pressure"
                   onChange={(e) =>
                     setState({ ...state, pressure: e.target.value })
                   }
                 />
-                <span>Employee?</span>
+                <span>No</span>
               </div>
             </label>
           </div>

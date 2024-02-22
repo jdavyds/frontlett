@@ -11,12 +11,12 @@ export default function Work() {
   const user = useSelector((state) => state.onboard.workHistory);
   const [state, setState] = useState({
     organization: user.organization || "",
-    role: user.role || "",
-    from: user.from || "",
-    to: user.to || "",
-    area: user.area || "",
-    minimum: user.minimum || "",
-    time: user.time || "",
+    role: user?.role || "",
+    from: user?.from || "",
+    to: user?.to || "",
+    area: user?.area || "",
+    minimum: user?.minimum || "",
+    time: user?.time || "",
   });
   
   const message = useSelector((state) => state.onboard.message);

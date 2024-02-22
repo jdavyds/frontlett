@@ -15,7 +15,7 @@ export default function Index() {
     username: "",
     password: "",
     confirmPassword: "",
-  });
+  })
   const message = useSelector((state) => state.user.message);
   const error = useSelector((state) => state.user.error);
   const loading = useSelector((state) => state.user.loading);

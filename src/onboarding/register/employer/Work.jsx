@@ -1,42 +1,53 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
+import { createCompany } from "../../../store/asyncActions/onboardAsyncActions";
 
 export default function Work() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.onboard.company);
   const [state, setState] = useState({
-    companyName: "",
-    companyEmail: "",
-    logo: "",
+    companyName: user?.name || "",
+    companyEmail: user?.email || "",
+    logo: user?.logo || "",
   });
-  const link = useSelector((state) => state.user.link);
-  const message = useSelector((state) => state.user.message);
-  const error = useSelector((state) => state.user.error);
-  const loading = useSelector((state) => state.user.loading);
+  
+  const message = useSelector((state) => state.onboard.message);
+  const error = useSelector((state) => state.onboard.error);
+  const loading = useSelector((state) => state.onboard.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/employer/job-information");
+    if (
+      state.companyName &&
+      state.companyEmail
+    ) {
+      const formDetails = new FormData();
+      formDetails.append("name", state.companyName);
+      formDetails.append("email", state.companyEmail);
+      formDetails.append("logo", state.logo);
+      dispatch(createCompany(formDetails));
+    }
   };
-
+  
   const [logoUrl, setLogoUrl] = useState(null);
-
+  
   useEffect(() => {
     if (state.dp) {
       setLogoUrl(URL.createObjectURL(state.dp));
     }
   }, [state.dp]);
-
+  
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "Employer Company Information Updated") {
       toast.success(message);
+      navigate("/onboard/employer/job-information");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -64,6 +75,7 @@ export default function Work() {
             type="text"
             placeholder=""
             required
+            value={state.companyName}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
               setState({ ...state, companyName: e.target.value })
@@ -75,6 +87,7 @@ export default function Work() {
           <input
             type="email"
             placeholder=""
+            value={state.companyEmail}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) =>
               setState({ ...state, companyEmail: e.target.value })
@@ -93,6 +106,7 @@ export default function Work() {
               Upload Logo
               <input
                 type="file"
+                value={state.logo}
                 className="border rounded-md bg-inherit h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer"
                 onChange={(e) => setState({ ...state, dp: e.target.files[0] })}
               />

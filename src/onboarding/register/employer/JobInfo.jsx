@@ -1,42 +1,69 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, updateMessage } from "../../../store/slices/userSlice";
+import { isError, updateMessage } from "../../../store/slices/onboardSlice";
 import toast from "react-hot-toast";
-
+import { createWork } from "../../../store/asyncActions/onboardAsyncActions";
 export default function JobInfo() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.onboard.jobInfo);
   const [state, setState] = useState({
-    category: "",
-    description: "",
-    specification: "",
-    file: "",
-    nature: "",
-    option: "",
-    skills: "",
-    level: "",
-    no: "",
-    budget: "",
-    start: "",
+    category: user?.category || "",
+    description: user?.description || "",
+    specification: user?.specification || "",
+    file: user?.file || "",
+    nature: user?.nature || "",
+    option: user?.option || "",
+    skills: user?.skills || "",
+    level: user?.level || "",
+    no: user?.no || "",
+    budget: user?.budget || "",
+    start: user?.start || "",
   });
-  const link = useSelector((state) => state.user.link);
-  const message = useSelector((state) => state.user.message);
-  const error = useSelector((state) => state.user.error);
-  const loading = useSelector((state) => state.user.loading);
+
+  const message = useSelector((state) => state.onboard.message);
+  const error = useSelector((state) => state.onboard.error);
+  const loading = useSelector((state) => state.onboard.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/virtualt/activate/work-history");
+    console.log(state);
+    if (
+      state.category &&
+      state.description &&
+      state.specification &&
+      state.nature &&
+      state.option &&
+      state.skills &&
+      state.level &&
+      state.no &&
+      state.budget &&
+      state.start
+    ) {
+      const formDetails = new FormData();
+      formDetails.append("category", state.category);
+      formDetails.append("description", state.description);
+      formDetails.append("specification", state.specification);
+      formDetails.append("file", state.file);
+      formDetails.append("nature", state.nature);
+      formDetails.append("option", state.option);
+      formDetails.append("skills", state.skills);
+      formDetails.append("level", state.level);
+      formDetails.append("no", state.no);
+      formDetails.append("budget", state.budget);
+      formDetails.append("start", state.start);
+      dispatch(createWork(formDetails));
+    }
   };
 
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "Employer Job Information Updated") {
       toast.success(message);
+      navigate("/");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -61,6 +88,7 @@ export default function JobInfo() {
           <span>Job Category</span>
           <select
             required
+            value={state.category}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, category: e.target.value })}
           >
@@ -82,8 +110,21 @@ export default function JobInfo() {
           <span>Job Description</span>
           <textarea
             className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
+            required
+            value={state.description}
             onChange={(e) =>
               setState({ ...state, description: e.target.value })
+            }
+          />
+        </label>
+        <label className="flex flex-col gap-2 col-span-2">
+          <span>Employee Specification</span>
+          <textarea
+            className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
+            required
+            value={state.specification}
+            onChange={(e) =>
+              setState({ ...state, specification: e.target.value })
             }
           />
         </label>
@@ -94,6 +135,7 @@ export default function JobInfo() {
               Upload File
               <input
                 type="file"
+                value={state.file}
                 className="border rounded-md bg-inherit h-full w-full opacity-0 absolute top-0 left-0 cursor-pointer"
                 onChange={(e) =>
                   setState({ ...state, file: e.target.files[0] })
@@ -106,16 +148,20 @@ export default function JobInfo() {
           <span>Nature of Project</span>
           <select
             required
+            value={state.nature}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, nature: e.target.value })}
           >
             <option value="">Select</option>
+            <option value="new">New Project</option>
+            <option value="existing">Existing Project</option>
           </select>
         </label>
         <label className="flex flex-col gap-2 col-span-2">
           <span>Preferred work option</span>
           <select
             required
+            value={state.option}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, option: e.target.value })}
           >
@@ -130,6 +176,8 @@ export default function JobInfo() {
             ?
           </span>
           <textarea
+            required
+            value={state.skills}
             className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
             onChange={(e) => setState({ ...state, skills: e.target.value })}
           />
@@ -138,6 +186,7 @@ export default function JobInfo() {
           <span>Level of Experience Required for this Project</span>
           <select
             required
+            value={state.level}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, level: e.target.value })}
           >
@@ -151,6 +200,7 @@ export default function JobInfo() {
           <span>Number of Virtualt Required for this Project</span>
           <select
             required
+            value={state.no}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, no: e.target.value })}
           >
@@ -163,6 +213,8 @@ export default function JobInfo() {
         <label className="flex flex-col gap-2 col-span-2">
           <span>Do you have a budget?</span>
           <textarea
+            required
+            value={state.budget}
             className="w-full border rounded-md bg-inherit h-32 px-5 py-5"
             onChange={(e) => setState({ ...state, budget: e.target.value })}
           />
@@ -172,6 +224,7 @@ export default function JobInfo() {
           <input
             type="date"
             required
+            value={state.start}
             className="w-full border rounded-md bg-inherit h-12 px-5"
             onChange={(e) => setState({ ...state, start: e.target.value })}
           />

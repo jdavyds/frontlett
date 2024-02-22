@@ -10,19 +10,19 @@ export default function Pi() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.onboard.info);
   const [state, setState] = useState({
-    email: user.email || "",
-    firstName: user.firstName || "",
-    lastName: user.lastName || "",
-    dob: user.dob || "",
-    gender: user.gender || "",
-    country: user.country || "",
-    address: user.address || "",
-    phone: user.phone || "",
-    state: user.state || "",
-    lga: user.lga || "",
-    nationality: user.nationality || "",
-    languages: user.languages || "",
-    possibleLocation: user.possibleLocation || "",
+    email: user?.email || "",
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    dob: user?.dob || "",
+    gender: user?.gender || "",
+    country: user?.country || "",
+    address: user?.address || "",
+    phone: user?.phone || "",
+    state: user?.state || "",
+    lga: user?.lga || "",
+    nationality: user?.nationality || "",
+    languages: user?.languages || "",
+    possibleLocation: user?.possibleLocation || "",
   });
 
   const message = useSelector((state) => state.onboard.message);

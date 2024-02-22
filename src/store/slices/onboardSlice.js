@@ -7,6 +7,8 @@ const initialState = {
   skills: [],
   info: {},
   score: 0,
+  company: {},
+  jobInfo: {},
   message: "",
   error: "",
   loading: false,
@@ -34,6 +36,14 @@ export const onboardSlice = createSlice({
     },
     updateScore: (state, action) => {
       state.score = action.payload;
+      state.loading = false;
+    },
+    updateCompany: (state, action) => {
+      state.company = action.payload;
+      state.loading = false;
+    },
+    updateJobInfo: (state, action) => {
+      state.jobInfo = action.payload;
       state.loading = false;
     },
     updateMessage: (state, action) => {
@@ -71,6 +81,8 @@ export const {
   updateSkills,
   updateInfo,
   updateScore,
+  updateCompany,
+  updateJobInfo,
   updateMessage,
   isError,
   isLoading,

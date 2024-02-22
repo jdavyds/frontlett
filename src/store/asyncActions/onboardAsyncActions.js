@@ -7,6 +7,7 @@ import {
   updateMessage,
   isError,
   isLoading,
+  updateCompany,
 } from "../slices/onboardSlice"
 
 export const createEducation = (data) => (dispatch) => {
@@ -89,3 +90,42 @@ export const createInfo = (data) => (dispatch) => {
     });
 }
 
+export const createCompany = (data) => (dispatch) => {
+  dispatch(isLoading());
+  const auth = JSON.parse(localStorage.getItem("frontlett::auth"));
+
+  base
+    .post(`/onboard/create-company-info/${auth.userId}`, data)
+    .then((res) => {
+      const data = cleanUpResponse(res);
+      const { company } = data;
+      dispatch(updateCompany(company));
+      dispatch(updateMessage("Employer Company Information Updated"));
+    })
+    .catch((res) => {
+      const err = cleanUpErr(res);
+      console.log(err);
+      const message = err?.message;
+      dispatch(isError(message ? message : res.message));
+    });
+}
+
+export const createWork = (data) => (dispatch) => {
+  dispatch(isLoading());
+  const auth = JSON.parse(localStorage.getItem("frontlett::auth"));
+
+  base
+    .post(`/onboard/create-work-info/${auth.userId}`, data)
+    .then((res) => {
+      const data = cleanUpResponse(res);
+      const { jobInfo } = data;
+      dispatch(updateCompany(jobInfo));
+      dispatch(updateMessage("Employer Job Information Updated"));
+    })
+    .catch((res) => {
+      const err = cleanUpErr(res);
+      console.log(err);
+      const message = err?.message;
+      dispatch(isError(message ? message : res.message));
+    });
+}

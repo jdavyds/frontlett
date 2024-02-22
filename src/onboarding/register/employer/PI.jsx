@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isError, updateMessage } from "../../../store/slices/userSlice";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { register } from "../../../store/asyncActions/userAsyncActions";
 
 export default function Pi() {
   const navigate = useNavigate();
@@ -16,23 +17,33 @@ export default function Pi() {
     password: "",
     confirmPassword: "",
   });
-  const link = useSelector((state) => state.user.link);
   const message = useSelector((state) => state.user.message);
   const error = useSelector((state) => state.user.error);
   const loading = useSelector((state) => state.user.loading);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/onboard/employer/work-information");
+    if (state.password && state.password !== state.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    if (state.email && state.username && state.password) {
+      const formDetails = new FormData();
+      formDetails.append("email", state.email);
+      formDetails.append("username", state.username);
+      formDetails.append("password", state.password);
+      formDetails.append("role", "employer");
+      dispatch(register(formDetails));
+    }
   };
 
   useEffect(() => {
-    if (message === "Registration Successful") {
+    if (message === "User Created") {
       toast.success(message);
+      navigate("/onboard/employer/work-information");
       dispatch(updateMessage(""));
-      window.location.assign(link);
     }
-  }, [navigate, message, dispatch, link]);
+  }, [navigate, message, dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -108,11 +119,11 @@ export default function Pi() {
             type={showP2 ? "text" : "password"}
             placeholder="Confirm Password"
             className="h-12 px-3 border z-10 w-full py-5 rounded-md bg-inherit outline-none"
-            value={state.verifyPassword}
+            value={state.confirmPassword}
             onChange={(e) =>
               setState((prevState) => ({
                 ...prevState,
-                verifyPassword: e.target.value,
+                confirmPassword: e.target.value,
               }))
             }
           />

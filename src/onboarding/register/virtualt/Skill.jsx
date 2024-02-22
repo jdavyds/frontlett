@@ -10,11 +10,11 @@ export default function Skill() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.onboard.skills);
   const [state, setState] = useState({
-    skills: user.skills || "",
-    preference: user.preference || "",
-    level: user.level || "",
-    titles: user.titles || "",
-    dp: user.dp || "",
+    skills: user?.skills || "",
+    preference: user?.preference || "",
+    level: user?.level || "",
+    titles: user?.titles || "",
+    dp: user?.dp || "",
   });
 
   const message = useSelector((state) => state.onboard.message);

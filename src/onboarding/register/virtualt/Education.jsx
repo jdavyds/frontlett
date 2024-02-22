@@ -10,11 +10,11 @@ export default function Education() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.onboard.education);
   const [state, setState] = useState({
-    qualification: user.qualification || "",
-    institution: user.institution || "",
-    from: user.from || "",
-    to: user.to || "",
-    course: user.course || "",
+    qualification: user?.qualification || "",
+    institution: user?.institution || "",
+    from: user?.from || "",
+    to: user?.to || "",
+    course: user?.course || "",
   });
 
   const message = useSelector((state) => state.onboard.message);

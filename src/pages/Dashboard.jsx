@@ -36,16 +36,12 @@ export default function Dashboard() {
       <Header />
       <div className="flex flex-col gap-5 text-center items-center justify-center h-[70vh]">
         <h2 className="text-2xl text-gray-700">User Details</h2>
-        <p className="text-lg text-gray-600">Name: {user.name}</p>
+        <p className="text-lg text-gray-600">Username: {user.username}</p>
         <p className="text-lg text-gray-600">Email: {user.email}</p>
-        <p className="text-lg text-gray-600">Phone: {user.phone}</p>
         <p className="text-lg text-gray-600">
           Referral Code: {user.referralCode}
         </p>
         <p className="text-lg text-gray-600">Referrals: {user.referrals}</p>
-        <p className="text-lg text-gray-600">Bank Name: {user.bank}</p>
-        <p className="text-lg text-gray-600">Account Name: {user.acct_name}</p>
-        <p className="text-lg text-gray-600">Account Number: {user.acct_no}</p>
         <button
           className="px-8 h-10 bg-primary text-white font-[600] rounded-md"
           onClick={handleLogout}

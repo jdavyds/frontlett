@@ -1,10 +1,9 @@
-"use client";
 import { useEffect, useState, useRef } from "react";
-import { faqs } from "../../utils/Faqs";
+import { faqs } from "../../../utils/Faqs";
 
 export default function Aside() {
   const [activeId, setActiveId] = useState("");
-  const observer = useRef<IntersectionObserver | null>(null);
+  const observer = useRef(null);
 
   useEffect(() => {
     observer.current = new IntersectionObserver((entries) => {
@@ -26,14 +25,20 @@ export default function Aside() {
         if (element) observer.current?.unobserve(element);
       });
     };
-  }, []);
+  }, [observer]);
 
   return (
-    <aside className={`flex md:flex-col overflow-x-scroll snap gap-5 uppercase h-fit md:pr-10`}>
+    <aside
+      className={`flex md:flex-col overflow-x-scroll snap gap-5 md:gap-10 uppercase h-fit md:pr-10`}
+    >
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className={faq.name === activeId ? "font-[800] py-2 border-b-4 border-[#212121] cursor-pointer" : "cursor-pointer"}
+          className={`${
+            faq.name === activeId
+              ? "font-[800] border-l-4 border-tertiary text-tertiary"
+              : ""
+          } px-3  cursor-pointer`}
           onClick={() => {
             const element = document.getElementById(faq.name);
             element?.scrollIntoView({ behavior: "smooth" });

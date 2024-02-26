@@ -23,7 +23,7 @@ import PinfoEmp from "./onboarding/register/employer/PI";
 import JobInfo from "./onboarding/register/employer/JobInfo";
 import WorkEmp from "./onboarding/register/employer/Work";
 import Search from "./pages/search";
-
+import Faq from "./pages/faq/faq";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -116,6 +116,10 @@ const router = createBrowserRouter([
   {
     path: "/careers",
     element: <Search />,
+  },
+  {
+    path: "/faq",
+    element: <Faq />,
   },
 ]);
 

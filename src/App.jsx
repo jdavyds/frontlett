@@ -22,6 +22,7 @@ import ActivateEmp from "./onboarding/register/employer/";
 import PinfoEmp from "./onboarding/register/employer/PI";
 import JobInfo from "./onboarding/register/employer/JobInfo";
 import WorkEmp from "./onboarding/register/employer/Work";
+import Search from "./pages/search";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
   {
     path: "/employer-pricing",
     element: <Employ />,
+  },
+  {
+    path: "/careers",
+    element: <Search />,
   },
 ]);
 

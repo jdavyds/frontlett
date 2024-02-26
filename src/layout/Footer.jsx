@@ -52,7 +52,7 @@ export default function Footer() {
             <Link to="/" className="hover:text-primary w-fit">
               Press
             </Link>
-            <Link to="/" className="hover:text-primary w-fit">
+            <Link to="/careers" className="hover:text-primary w-fit">
               Careers
             </Link>
             <Link to="/" className="hover:text-primary w-fit">

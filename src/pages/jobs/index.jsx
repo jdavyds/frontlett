@@ -15,7 +15,7 @@ import hero from "../../assets/hero.jpg";
 const users = [
   {
     img: logo1,
-    name: "Trype Inc",
+    name: "Trype Inc 1",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -44,7 +44,7 @@ const users = [
   },
   {
     img: logo2,
-    name: "Jane Doe",
+    name: "Jane Doe 2",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -73,7 +73,7 @@ const users = [
   },
   {
     img: logo3,
-    name: "Trype Inc",
+    name: "Trype Inc 3",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -102,7 +102,7 @@ const users = [
   },
   {
     img: logo4,
-    name: "Trype Inc",
+    name: "Trype Inc 4",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -131,7 +131,7 @@ const users = [
   },
   {
     img: logo5,
-    name: "Jane Doe",
+    name: "Jane Doe 5",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -160,7 +160,7 @@ const users = [
   },
   {
     img: logo3,
-    name: "Trype Inc",
+    name: "Trype Inc 6",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -189,7 +189,7 @@ const users = [
   },
   {
     img: logo1,
-    name: "Trype Inc",
+    name: "Trype Inc 7",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -218,7 +218,7 @@ const users = [
   },
   {
     img: logo2,
-    name: "Jane Doe",
+    name: "Jane Doe 8",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -247,7 +247,7 @@ const users = [
   },
   {
     img: logo4,
-    name: "Trype Inc",
+    name: "Trype Inc 9",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -276,7 +276,7 @@ const users = [
   },
   {
     img: logo5,
-    name: "Trype Inc",
+    name: "Trype Inc 10",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -305,7 +305,7 @@ const users = [
   },
   {
     img: logo6,
-    name: "Jane Doe",
+    name: "Jane Doe 11",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -334,7 +334,7 @@ const users = [
   },
   {
     img: logo1,
-    name: "Trype Inc",
+    name: "Trype Inc 12",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -363,7 +363,7 @@ const users = [
   },
   {
     img: logo2,
-    name: "Trype Inc",
+    name: "Trype Inc 13",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -392,7 +392,7 @@ const users = [
   },
   {
     img: logo3,
-    name: "Jane Doe",
+    name: "Jane Doe 14",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -421,7 +421,7 @@ const users = [
   },
   {
     img: logo4,
-    name: "Trype Inc",
+    name: "Trype Inc 15",
     position: "Software Developer",
     location: "16, Adebisi Adele, Isolo, Lagos",
     type: "Full Time",
@@ -536,6 +536,7 @@ export default function Index() {
                   salary={active.salary}
                   about={user.about}
                   setActive={setActive}
+                  active={active}
                 />
               ))}
             </div>
@@ -625,30 +626,63 @@ export default function Index() {
 const Single = ({ ...info }) => {
   return (
     <div
-      className="bg-white flex flex-col gap-5 rounded-xl shadow-xl p-5"
+      className={`flex flex-col gap-5 rounded-xl shadow-xl p-5 transition-all ease-in-out duration-300 ${
+        info.active.name === info.name ? "bg-primary text-white" : "bg-white"
+      }`}
       onClick={() => info.setActive(info)}
     >
       <nav className="flex gap-2 relative">
         <img src={info.img} alt="" className="h-12 w-12" />
         <div className="flex flex-col gap-2">
-          <span className="text-primary">{info.name}</span>
+          <span
+            className={`
+          ${info.active.name === info.name ? "text-white" : "text-primary"}`}
+          >
+            {info.name}
+          </span>
           <b>{info.position}</b>
           <span>{info.location}</span>
         </div>
         <button
           className={`border-[#C4C4C4] border bg-inherit rounded h-7 w-7 ml-auto flex justify-center items-center`}
         >
-          <FaHeart className={`text-[#C4C4C4]`} />
+          <FaHeart
+            className={`
+          ${info.active.name === info.name ? "text-white" : "text-[#C4C4C4]"}
+          `}
+          />
         </button>
       </nav>
       <div className="flex gap-2 items-center justify-evenly">
-        <span className="bg-[#C4C4C438] px-4 py-1 rounded text-tertiary">
+        <span
+          className={`px-4 py-1 rounded
+        ${
+          info.active.name === info.name
+            ? "text-white bg-[#C4C4C438]"
+            : "text-tertiary bg-[#C4C4C438]"
+        }
+        `}
+        >
           {info.type}
         </span>
-        <span className="bg-[#C4C4C438] px-4 py-1 rounded text-primary">
+        <span
+          className={`px-4 py-1 rounded
+        ${
+          info.active.name === info.name
+            ? "text-white bg-[#C4C4C438]"
+            : "text-primary bg-[#C4C4C438]"
+        }
+        `}
+        >
           {info.level}
         </span>
-        <span className="bg-[#C4C4C438] px-4 py-1 rounded text-primary">
+        <span
+          className={`px-4 py-1 rounded ${
+            info.active.name === info.name
+              ? "text-white bg-[#C4C4C438]"
+              : "text-primary bg-[#C4C4C438]"
+          }`}
+        >
           {info.slots} Slots
         </span>
         <span>4d</span>

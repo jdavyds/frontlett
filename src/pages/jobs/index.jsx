@@ -488,7 +488,7 @@ export default function Index() {
             >
               <FaPlus />
             </button>
-            <nav className="flex flex-col gap-1 absolute left-0">
+            <nav className="flex flex-col gap-1 absolute right-20">
               {jobs.map((job, index) => (
                 <p
                   key={index}
